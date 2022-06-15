@@ -4,6 +4,7 @@ import Categories from '../components/Categories';
 import HeaderTabs from '../components/HeaderTabs'
 import RestaurantItem from '../components/RestaurantItem';
 import SearchBar from '../components/SearchBar';
+import RestaurantItemHorizontal from '../components/RestaurantItemHorizontal';
 
 export default function Home() {
     return (
@@ -14,6 +15,7 @@ export default function Home() {
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Categories />
+                <RestaurantItemHorizontal />
                 <RestaurantItem />
                 <RestaurantItem />
                 <RestaurantItem />
