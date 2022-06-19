@@ -9,7 +9,8 @@ export const localRestaurants = [
         categories: ["Cafe", "Bar"],
         price: "$$",
         reviews: 1244,
-        rating: 4.5
+        rating: 4.5,
+        city: "..."
     },
     {
         name: "Springbreak",
@@ -17,7 +18,8 @@ export const localRestaurants = [
         categories: ["Cafe", "Bar"],
         price: "$$",
         reviews: 1244,
-        rating: 3.7
+        rating: 3.7,
+        city: "..."
     },
     {
         name: "Premium De Bronx",
@@ -25,7 +27,8 @@ export const localRestaurants = [
         categories: ["Cafe", "Bar"],
         price: "$$",
         reviews: 1244,
-        rating: 5
+        rating: 5,
+        city: "..."
     }
 ];
 
@@ -40,7 +43,7 @@ export default function RestaurantItem(props) {
                 {props.restaurantData.map((restaurant, index) => (
                     <View key={index} style={{ marginTop: 10, padding: 15 }}>
                         <RestaurantImage image_url={restaurant.image_url} />
-                        <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
+                        <RestaurantInfo name={restaurant.name} rating={restaurant.rating} phone={restaurant.display_phone} city={restaurant.location.city} address={restaurant.location.address1} />
                     </View>
                 ))}
             </TouchableOpacity>
@@ -66,7 +69,7 @@ const RestaurantInfo = (props) => (
     <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 10}}>
         <View>
             <Text style={{fontSize: 15, fontWeight: "bold"}}>{props.name}</Text>
-            <Text style={{fontSize: 13, color: 'gray'}}>30-45 min</Text>
+            <Text style={{fontSize: 13, color: 'gray'}}>{props.phone} • {props.address}</Text>
         </View>
         <View style={{backgroundColor: "#eee", height: 30, width: 30, alignItems: "center", justifyContent: "center", borderRadius: 15}}>
             <Text>{props.rating}</Text>

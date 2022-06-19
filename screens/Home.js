@@ -11,9 +11,10 @@ const YELP_API_KEY = "gwggNHvf81V0FiS2J0YZfqopGfAj4PEkk4INOZQ5WAVwX9UAcqnIzfpHfT
 export default function Home() {
     const [restaurantData, setRestaurantData] = useState(localRestaurants);
     const [newestRestaurantData, setNewestRestaurantData] = useState(localRestaurants);
+    const [city, setCity] = useState("San Francisco");
 
     const getRestaurantsFromYelp = () => {
-        const yelpUrl = "https://api.yelp.com/v3/businesses/search?term=restaurants&location=SanDiego";
+        const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}`;
 
 
         const apiOptions = {
@@ -29,7 +30,7 @@ export default function Home() {
     };
 
     const getNewestRestaurantsFromYelp = () => {
-        const yelpNewestRestaurantsUrl = "https://api.yelp.com/v3/businesses/search?term=restaurants&location=SanDiego&attributes=hot_and_new";
+        const yelpNewestRestaurantsUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}&attributes=hot_and_new`;
 
         const apiOptions = {
             headers: {
@@ -45,22 +46,22 @@ export default function Home() {
 
     useEffect(() => {
         getRestaurantsFromYelp()
-    }, []);
+    }, [city]);
 
     useEffect(() => {
         getNewestRestaurantsFromYelp()
-    }, []);
+    }, [city]);
 
     return (
         <SafeAreaView style={{backgroundColor: "#eee", flex: 1}}>
             <View style={{backgroundColor: "white", padding: 15}}>
                 <HeaderTabs />
-                <SearchBar />
+                <SearchBar cityHandler={setCity}/>
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Categories />
                 <RestaurantItemsHorizontal newestRestaurantData={newestRestaurantData}/>
-                <RestaurantItems restaurantData={restaurantData} />
+                <RestaurantItems restaurantData={restaurantData}/>
             </ScrollView>
         </SafeAreaView>
     );

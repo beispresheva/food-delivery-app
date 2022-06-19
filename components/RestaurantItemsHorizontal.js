@@ -14,7 +14,7 @@ export default function RestaurantItemHorizontal(props) {
                 <TouchableOpacity activeOpacity={1}>
                         <View key={index} style={{paddingLeft: 15, paddingRight: 15, paddingBottom: 20, marginRight: 15}}>
                             <RestaurantImage image_url={restaurant.image_url} />
-                            <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
+                            <RestaurantInfo name={restaurant.name} rating={restaurant.rating} city={restaurant.location.city} address={restaurant.location.address1} />
                         </View>
                 </TouchableOpacity>
             ))}
@@ -41,7 +41,7 @@ const RestaurantInfo = (props) => (
         </View>
         <View style={{flexDirection: "row", justifyContent: "flex-start", alignItems: "center", marginTop: 5}}>
             <View style={{marginRight: 5}}>
-                <Text style={{fontSize: 13, color: 'gray'}}>Veternik, Lagja NIC</Text>
+                <Text style={{fontSize: 13, color: 'gray'}}>{props.address}</Text>
             </View>
             <View style={{marginRight: 5}}>
                 <Text style={{fontWeight: "bold", fontSize: 13, color: 'gray'}}>•</Text>
