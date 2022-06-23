@@ -43,6 +43,7 @@ export default function RestaurantItem(props) {
                 {props.restaurantData.map((restaurant, index) => (
                     <View key={index} style={{ marginTop: 10, padding: 15 }}>
                         <RestaurantImage image_url={restaurant.image_url} />
+                        {/* <RestaurantInfo name={restaurant.name} rating={restaurant.rating} phone={restaurant.display_phone} city={restaurant.location.city} address={restaurant.location.address1} /> */}
                         <RestaurantInfo name={restaurant.name} rating={restaurant.rating} phone={restaurant.display_phone} city={restaurant.location.city} address={restaurant.location.address1} />
                     </View>
                 ))}

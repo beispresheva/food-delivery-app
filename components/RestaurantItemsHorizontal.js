@@ -14,7 +14,8 @@ export default function RestaurantItemHorizontal(props) {
                 <TouchableOpacity activeOpacity={1}>
                         <View key={index} style={{paddingLeft: 15, paddingRight: 15, paddingBottom: 20, marginRight: 15}}>
                             <RestaurantImage image_url={restaurant.image_url} />
-                            <RestaurantInfo name={restaurant.name} rating={restaurant.rating} city={restaurant.location.city} address={restaurant.location.address1} />
+                            {/* <RestaurantInfo name={restaurant.name} rating={restaurant.rating} address={restaurant.location.address1} /> */}
+                            <RestaurantInfo name={restaurant.name} address={restaurant.location.address1} />
                         </View>
                 </TouchableOpacity>
             ))}
