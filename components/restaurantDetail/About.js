@@ -8,7 +8,7 @@ const description = 'Lorem ipsum dolor amet sinid amet dolor isit';
 
 export default function About() {
     return (
-        <View style={{padding: 15}}>
+        <View style={{padding: 20}}>
             <RestaurantImage image={image} />
             
             <RestaurantTitle title={title}/>
@@ -19,7 +19,7 @@ export default function About() {
 }
 
 const RestaurantImage = (props) => (
-    <Image source={{uri: props.image}} style={{width: "100%", height: 180, borderRadius: 8}} />
+    <Image source={{uri: props.image}} style={{width: "100%", height: 140, borderRadius: 8}} />
 );
 
 const RestaurantTitle = (props) => (
