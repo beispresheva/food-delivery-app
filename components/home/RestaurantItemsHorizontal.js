@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default function RestaurantItemHorizontal(props) {
+export default function RestaurantItemHorizontal({navigation, ...props}) {
     return (
         <>
         <View style={{backgroundColor: "#fff", marginTop: 10 }}>
@@ -11,11 +11,19 @@ export default function RestaurantItemHorizontal(props) {
             </View>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {props.newestRestaurantData.map((restaurant, index) => (
-                <TouchableOpacity activeOpacity={1}>
-                        <View key={index} style={{paddingLeft: 15, paddingRight: 15, paddingBottom: 20, marginRight: 15}}>
+                <TouchableOpacity key={index} activeOpacity={1}
+                onPress={
+                    () => navigation.navigate("RestaurantDetail", {
+                        name: restaurant.name,
+                        image: restaurant.image_url,
+                        display_phone: restaurant.display_phone,
+                        address1: restaurant.address1,
+                        city: restaurant.city
+                    })
+                }>
+                        <View  style={{paddingLeft: 15, paddingRight: 15, paddingBottom: 20, marginRight: 15}}>
                             <RestaurantImage image_url={restaurant.image_url} />
-                            {/* <RestaurantInfo name={restaurant.name} rating={restaurant.rating} address={restaurant.location.address1} /> */}
-                            <RestaurantInfo name={restaurant.name} address={restaurant.location.address1} />
+                            <RestaurantInfo name={restaurant.name} address={restaurant.address1} />
                         </View>
                 </TouchableOpacity>
             ))}

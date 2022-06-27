@@ -10,7 +10,7 @@ import { Divider } from 'react-native-elements/dist/divider/Divider';
 
 const YELP_API_KEY = "gwggNHvf81V0FiS2J0YZfqopGfAj4PEkk4INOZQ5WAVwX9UAcqnIzfpHfTnseJ70juod7Nz-9Z-gFjceAbguxByDXAVdbyeVlebq8onLNtTAGOPDsS3ykEySVkuvYnYx";
 
-export default function Home() {
+export default function Home({navigation}) {
     const [restaurantData, setRestaurantData] = useState(localRestaurants);
     const [newestRestaurantData, setNewestRestaurantData] = useState(localRestaurants);
     const [city, setCity] = useState("San Francisco");
@@ -56,15 +56,15 @@ export default function Home() {
     }, [city, activeTab]);
 
     return (
-        <SafeAreaView style={{backgroundColor: "#eee", flex: 1}}>
+        <SafeAreaView style={{flex: 1}}>
             <View style={{backgroundColor: "white", padding: 15}}>
                 <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab}/>
                 <SearchBar cityHandler={setCity}/>
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Categories />
-                <RestaurantItemsHorizontal newestRestaurantData={newestRestaurantData}/>
-                <RestaurantItems restaurantData={restaurantData}/>
+                <RestaurantItemsHorizontal newestRestaurantData={newestRestaurantData} navigation={navigation}/>
+                <RestaurantItems restaurantData={restaurantData} navigation={navigation}/>
             </ScrollView>
             <Divider width={1} />
             <BottomTabs />

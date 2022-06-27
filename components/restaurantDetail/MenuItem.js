@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     menuItemStyles: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        margin: 20
+        padding: 20
     },
 
     titleStyle: {
@@ -56,12 +56,11 @@ const styles = StyleSheet.create({
 
 export default function MenuItem() {
     return (
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor: 'white'}}>
         {foods.map((food, index) => (
             <View key={index}>
                 <View style={styles.menuItemStyles}>
                     <FoodInfo food={food} />
-
                     <FoodImage food={food} />
                 </View>
             </View>

@@ -11,16 +11,20 @@ const yelpRestaurantInfo = {
     }
 };
 
-const {name, image, display_phone, location} = yelpRestaurantInfo;
 
-const LocationAddress = location.address1;
-const LocationCity = location.city;
 
-const description = `${LocationAddress} • ${LocationCity} • ${display_phone}`;
+export default function About(props) {
+    const {name, image, display_phone, location} = props.route.params;
 
-export default function About() {
+    const LocationAddress = yelpRestaurantInfo.location.address1;
+    const LocationCity = yelpRestaurantInfo.location.city;
+
+    const description = `${LocationAddress} • ${LocationCity} • ${display_phone}`;
+
+
+
     return (
-        <View style={{padding: 20}}>
+        <View style={{padding: 20, backgroundColor: 'white'}}>
             <RestaurantImage image={image} />
             
             <RestaurantName name={name}/>

@@ -5,12 +5,12 @@ import { Divider } from 'react-native-elements'
 import About from '../components/restaurantDetail/About'
 import MenuItem from '../components/restaurantDetail/MenuItem'
 
-export default function RestaurantDetail() {
+export default function RestaurantDetail({route}) {
     return (
         <SafeAreaView>
             <View>
-                <About />
-                <Divider width={10} color={"#eee"} style={{marginVertical: 20, backgroundColor: "#eee"}} />
+                <About route={route}/>
+                <Divider width={10} color={"#eee"}/>
                 <MenuItem styles/>
             </View>
         </SafeAreaView>
