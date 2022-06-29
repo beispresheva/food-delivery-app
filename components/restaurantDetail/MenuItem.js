@@ -2,6 +2,7 @@ import React from 'react'
 import { ScrollView } from 'react-native';
 import { View, Text, StyleSheet, Image } from 'react-native'
 import { Divider } from 'react-native-elements';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 const foods = [
     {
@@ -33,7 +34,7 @@ const foods = [
 const styles = StyleSheet.create({
     menuItemStyles: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         padding: 20
     },
 
@@ -60,6 +61,7 @@ export default function MenuItem() {
         {foods.map((food, index) => (
             <View key={index}>
                 <View style={styles.menuItemStyles}>
+                    <BouncyCheckbox iconStyle={{borderRadius: 5}} fillColor="green"/>
                     <FoodInfo food={food} />
                     <FoodImage food={food} />
                 </View>
@@ -70,7 +72,7 @@ export default function MenuItem() {
 }
 
 const FoodInfo = (props) => (
-    <View style={{width: 240, justifyContent: "space-evenly"}}>
+    <View style={{width: 200, justifyContent: "space-evenly"}}>
         <Text style={styles.titleStyle}>{props.food.title}</Text>
         <Text style={styles.descriptionStyle}>{props.food.description}</Text>
         <Text style={styles.priceStyle}>{props.food.price}</Text>
@@ -79,6 +81,6 @@ const FoodInfo = (props) => (
 
 const FoodImage = (props) => (
     <View>
-        <Image source={{uri: props.food.image}} style={{width: 100, height: 100, borderRadius: 8}} />
+        <Image source={{uri: props.food.image}} style={{width: 100, height: 80, borderRadius: 8}} />
     </View>
 );
