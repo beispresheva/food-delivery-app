@@ -2,24 +2,26 @@ import React from 'react'
 import { View, Text, Image } from 'react-native'
 
 const yelpRestaurantInfo = {
-    name: 'Farmhouse Kitchen Thai Cuisine',
+    name: 'Test',
     image: "https://im1.dineout.co.in/images/uploads/restaurant/sharpen/2/e/d/p29410-15743151555dd62493bdda1.jpg?tr=tr:n-xlarge",
     display_phone: "+14157492060",
-    location: {
-        address1: "800 N Point St",
-        city: "San Francisco"
-    }
+    address1: "800 N Point St",
+    city: "San Francisco"
+    // location: {
+    //     address1: "800 N Point St",
+    //     city: "San Francisco"
+    // }
 };
 
 
 
 export default function About(props) {
-    const {name, image, display_phone, location} = props.route.params;
+    const {name, image, display_phone, address1, city} = props.route.params;
 
-    const LocationAddress = yelpRestaurantInfo.location.address1;
-    const LocationCity = yelpRestaurantInfo.location.city;
+    // const LocationAddress = yelpRestaurantInfo.location.address1;
+    // const LocationCity = yelpRestaurantInfo.location.city;
 
-    const description = `${LocationAddress} • ${LocationCity} • ${display_phone}`;
+    const description = `${address1} • ${city} • ${display_phone}`;
 
 
 

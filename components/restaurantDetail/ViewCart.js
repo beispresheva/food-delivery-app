@@ -1,9 +1,21 @@
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import { View, Text } from 'react-native'
+import { useSelector } from 'react-redux';
 
 export default function ViewCart() {
+const items = useSelector((state) => state.cartReducer.selectedItems.items);
+const total = items.map((item => Number(item.price.replace('€', '')))).reduce((prev, curr) => prev + curr, 0);
+const totalEUR = total.toLocaleString("en", {
+    style: "currency",
+    currency: "EUR"
+});
+
+console.log(totalEUR);
+
     return (
+    <>
+        {total ? (
         <View
             style={{
                 flex: 1,
@@ -32,10 +44,11 @@ export default function ViewCart() {
                         position: 'relative'
                     }}
                 >
-                    <Text style={{ color: 'white', fontSize: 20 }}>View Cart</Text>
+                    <Text style={{ color: 'white', fontSize: 20 }}>Order Cart  ({totalEUR})</Text>
                 </TouchableOpacity>
             </View>
-        </View>
-        
+        </View>)
+        : (<></>)}
+    </>
     )
 }
