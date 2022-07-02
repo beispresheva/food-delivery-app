@@ -17,7 +17,15 @@ export default function ViewCart() {
         currency: "EUR"
     });
 
-
+    const addOrderToFirebase = () => {
+        const db = firebase.firestore();
+        db.collection('orders').add({
+            items: items,
+            restaurantName: restaurantName,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        setModalVisible(false);
+    }
 
     const styles = StyleSheet.create({
         modalContainer: {
